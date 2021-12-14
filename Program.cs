@@ -128,12 +128,25 @@ namespace realclicore
                         var slnData = await RunCli("dotnet sln ..// add ..//" + projectname + ".Data/" + projectname + ".Data.csproj");
                         var slnDomain = await RunCli("dotnet sln ..// add ..//" + projectname + ".Domain/" + projectname + ".Domain.csproj");
                         var slnBusiness = await RunCli("dotnet sln ..// add ..//" + projectname + ".Business/" + projectname + ".Business.csproj");
+                        
+                        if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
+                        {
+
+                            await RunCli("rm -r realcorecli/*");
+                        
+                        }
                     }
                 }
             }
             else
             {
                 var app = await RunCli(cli + " --output ..//" + projectname);
+                if (app == 0)
+                {
+
+                    await RunCli("rm -r realcorecli/*");
+                    
+                }
             }
             return "build";
         }
