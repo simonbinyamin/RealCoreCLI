@@ -132,10 +132,8 @@ namespace realclicore
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
 
-                            var e = await RunCli("cd ..");
-                            if(e==0) {
-                                await RunCli("rm -r realcorecli/*");
-                            }
+                            await RunCli("rm -r ../realcorecli/*");
+                            await RunCli("cd ..");
                             
                         
                         }
