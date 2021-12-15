@@ -112,27 +112,28 @@ namespace realclicore
             if (layered)
             {
                 var sln = await RunCli("dotnet new sln --name " + projectname + " --output Outps");
-                var app = await RunCli(cli + " --output Outps/" + projectname);
+                var app = await RunCli(cli + " --output /" + projectname);
 
                 if (app == 0)
                 {
 
-                    var domain = await RunCli("dotnet new classlib --output Outps/" + projectname + "." + "Domain");
-                    var data = await RunCli("dotnet new classlib --output Outps/" + projectname + "." + "Data");
-                    var business = await RunCli("dotnet new classlib --output Outps/" + projectname + "." + "Business");
+                    var domain = await RunCli("dotnet new classlib --output /" + projectname + "." + "Domain");
+                    var data = await RunCli("dotnet new classlib --output /" + projectname + "." + "Data");
+                    var business = await RunCli("dotnet new classlib --output /" + projectname + "." + "Business");
 
                     if (domain == 0 && data == 0 && business == 0)
                     {
 
-                        var slnProj = await RunCli("dotnet sln Outps/ add Outps/" + projectname + "/" + projectname + ".csproj");
-                        var slnData = await RunCli("dotnet sln Outps/ add Outps/" + projectname + ".Data/" + projectname + ".Data.csproj");
-                        var slnDomain = await RunCli("dotnet sln Outps/ add Outps/" + projectname + ".Domain/" + projectname + ".Domain.csproj");
-                        var slnBusiness = await RunCli("dotnet sln Outps/ add Outps/" + projectname + ".Business/" + projectname + ".Business.csproj");
+                        
+                        var slnProj = await RunCli("dotnet sln / add /" + projectname + "/" + projectname + ".csproj");
+                        var slnData = await RunCli("dotnet sln / add /" + projectname + ".Data/" + projectname + ".Data.csproj");
+                        var slnDomain = await RunCli("dotnet sln / add /" + projectname + ".Domain/" + projectname + ".Domain.csproj");
+                        var slnBusiness = await RunCli("dotnet sln / add /" + projectname + ".Business/" + projectname + ".Business.csproj");
                         
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
 
-                            //await RunCli("rm -r realcorecli");
+                            await RunCli("rm -r realcorecli");
 
                             
                         
