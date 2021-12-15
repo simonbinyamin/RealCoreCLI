@@ -130,7 +130,7 @@ namespace realclicore
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
 
-                            //await RunCli("rm -r realcorecli");
+                            await RunCli("rm -r realcorecli");
 
                             
                         
@@ -140,13 +140,10 @@ namespace realclicore
             }
             else
             {
-                var app = await RunCli(cli + " --output ..//" + projectname);
+                var app = await RunCli(cli + " --output " + projectname);
                 if (app == 0)
                 {
-                    var e = await RunCli("cd ..");
-                    if(e==0) {
-                        await RunCli("rm -r realcorecli/*");
-                    }
+                    await RunCli("rm -r realcorecli/*");
                     
                 }
             }
