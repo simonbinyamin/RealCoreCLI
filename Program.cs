@@ -130,7 +130,7 @@ namespace realclicore
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
 
-                            await RunCli("rm -r realcorecli");
+                            await RunCli("sudo rm -r realcorecli");
 
                             
                         
