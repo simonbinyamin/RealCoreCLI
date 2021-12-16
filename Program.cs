@@ -130,7 +130,10 @@ namespace realclicore
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
 
-                            await RunCli("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.runtimeconfig.json realcorecli.dll");
+                            var deletefiles = await RunCli("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.dll");
+                            if(deletefiles==0) {
+                                await RunCli("rm realcorecli.runtimeconfig.json");
+                            }
 
                         }
                     }
