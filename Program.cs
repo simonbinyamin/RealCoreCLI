@@ -130,7 +130,7 @@ namespace realclicore
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
 
-                            await RunCli("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.dll");
+                            await RunCli("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.runtimeconfig.json realcorecli.dll");
 
                         }
                     }
@@ -140,7 +140,7 @@ namespace realclicore
             {
                 var app = await RunCli(cli + " --output " + projectname);
                 if(app==0) {
-                    await RunCli("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.dll");
+                    await RunCli("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.runtimeconfig.json realcorecli.dll");
                 }
             }
             return "build";
