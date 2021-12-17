@@ -1,0 +1,20 @@
+{
+    "name": "realcorecli",
+    "displayName": "RealCoreCLI",
+    "description": "Real .NET core cli",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "categories": [
+        "Keymaps"
+    ],
+    "contributes": {
+        "keybindings": [
+            {
+                "key": "ctrl+.",
+                "command": "workbench.action.showCommands"
+            }
+        ]
+    }
+}
