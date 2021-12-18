@@ -1,13 +1,26 @@
-# README
-## This is the README for your extension "realcorecli"
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+## Welcome to Real Core CLI
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
+### Real Core CLI screenshot
 
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+![alt text](https://github.com/simonbinyamin/RealCoreCLI/raw/master/ic/cli0.png)
 
-**Enjoy!**
+![alt text](https://github.com/simonbinyamin/RealCoreCLI/raw/master/ic/cli1.png)
+
+![alt text](https://github.com/simonbinyamin/RealCoreCLI/raw/master/ic/cli2.png)
+
+
+
+### 1. Start Real Core CLI
+
+```
+ctrl + Shift + I
+This will download and run the library.
+```
+
+
+ 
+### Developer
+
+Name: Simon Binyamin
+Email: simon.m.binyamin@gmail.com
+

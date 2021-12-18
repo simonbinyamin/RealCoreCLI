@@ -22,7 +22,7 @@
                 "key": "ctrl+r",
                 "command": "workbench.action.terminal.sendSequence",
                 "args": {
-                    "text": "rm realcorecli.runtimeconfig.json\r"
+                    "text": ""
                 }
             }
         ]
