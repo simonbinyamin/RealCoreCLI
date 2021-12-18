@@ -1,8 +1,20 @@
 {
+    
+    
     "name": "realcorecli",
     "displayName": "RealCoreCLI",
     "description": "Real .NET core cli",
     "version": "0.0.1",
+	"publisher": "realvisualstudio",
+	"icon": "ic/head.png",
+	"author": {
+		"name": "Simon Binyamin",
+		"email": "simon.m.binyamin@gmail.com"
+	},
+	"repository": {
+		"url": "https://github.com/simonbinyamin/RealCoreCLI.git",
+		"type": "git"
+	},
     "engines": {
         "vscode": "^1.63.0"
     },
