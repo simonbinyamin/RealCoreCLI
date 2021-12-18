@@ -13,7 +13,7 @@
 ### 1. Start Real Core CLI
 
 ```
-ctrl + Shift + I
+ctrl + I
 This will download and run the library.
 ```
 

@@ -4,7 +4,7 @@
     "name": "realcorecli",
     "displayName": "RealCoreCLI",
     "description": "Real .NET core cli",
-    "version": "0.0.1",
+    "version": "0.0.3",
 	"publisher": "realvisualstudio",
 	"icon": "ic/head.png",
 	"author": {
@@ -24,10 +24,17 @@
     "contributes": {
         "keybindings": [
             {
-                "key": "ctrl+i",
+                "linux": "ctrl+i",
                 "command": "workbench.action.terminal.sendSequence",
                 "args": {
                     "text": "curl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.dll --output realcorecli.dll\rcurl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli --output realcorecli\rcurl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.deps.json --output realcorecli.deps.json\rcurl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.pdb --output realcorecli.pdb\rcurl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.runtimeconfig.json --output realcorecli.runtimeconfig.json\rdotnet realcorecli.dll\r"
+                }
+            },
+            {
+                "win": "ctrl+i",
+                "command": "workbench.action.terminal.sendSequence",
+                "args": {
+                    "text": "curl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.dll --output realcorecli.dll\rcurl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli --output realcorecli\rcurl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.deps.json --output realcorecli.deps.json\rcurl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.pdb --output realcorecli.pdb\rcurl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.runtimeconfig.json --output realcorecli.runtimeconfig.json\rdotnet realcorecli.dll\r"
                 }
             },
             {
