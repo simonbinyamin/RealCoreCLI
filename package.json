@@ -4,7 +4,7 @@
     "name": "realcorecli",
     "displayName": "RealCoreCLI",
     "description": "Real .NET core cli",
-    "version": "0.0.3",
+    "version": "0.0.4",
 	"publisher": "realvisualstudio",
 	"icon": "ic/head.png",
 	"author": {
