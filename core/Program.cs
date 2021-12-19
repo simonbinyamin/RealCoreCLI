@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace realclicore
 {
@@ -41,7 +42,7 @@ namespace realclicore
                 projname = Console.ReadLine();
             }
 
-            await GetBuild(cli, projname, layered);
+            await Build.GetBuild(cli, projname, layered);
 
             Console.Clear();
             Environment.Exit(0);
@@ -102,99 +103,7 @@ namespace realclicore
         }
 
 
-
-        public static async Task<string> GetBuild(string cli, string projectname, bool layered)
-        {
-            try
-            {
-                if (layered)
-                {
-                    var sln = await RunCli("dotnet new sln --name " + projectname);
-                    var app = await RunCli(cli + " --output " + projectname);
-                    if (app == 0)
-                    {
-                        var domain = await RunCli("dotnet new classlib --output " + projectname + "." + "Domain");
-                        var data = await RunCli("dotnet new classlib --output " + projectname + "." + "Data");
-                        var business = await RunCli("dotnet new classlib --output " + projectname + "." + "Business");
-
-                        if (domain == 0 && data == 0 && business == 0)
-                        {
-
-                            var slnProj = await RunCli("dotnet sln add " + projectname + "/" + projectname + ".csproj");
-                            var slnData = await RunCli("dotnet sln add " + projectname + ".Data/" + projectname + ".Data.csproj");
-                            var slnDomain = await RunCli("dotnet sln add " + projectname + ".Domain/" + projectname + ".Domain.csproj");
-                            var slnBusiness = await RunCli("dotnet sln add " + projectname + ".Business/" + projectname + ".Business.csproj");
-
-                            if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
-                            {
-
-                                var deletefiles = await RunCli("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.dll");
-                                if (deletefiles == 0)
-                                {
-                                    await RunCli("rm realcorecli.runtimeconfig.json");
-                                }
-
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    var app = await RunCli(cli);
-                    if (app == 0)
-                    {
-                        await RunCli("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.runtimeconfig.json realcorecli.dll");
-                    }
-                }
-                return "build";
-            }
-            catch (Exception)
-            {
-                return "build failed";
-            }
-        }
-
-        static Task<int> RunCli(string cmd)
-        {
-            var tasksource = new TaskCompletionSource<int>();
-            var escapingArgs = cmd.Replace("\"", "\\\"");
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "bash",
-                    Arguments = $"-c \"{escapingArgs}\"",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                },
-                EnableRaisingEvents = true
-            };
-
-            process.Exited += (sender, args) =>
-             {
-                 if (process.ExitCode == 0)
-                     tasksource.SetResult(0);
-                 else
-                     tasksource.SetResult(process.ExitCode);
-                 process.Dispose();
-             };
-
-            try
-            {
-                process.Start();
-                Console.Write(process.StandardError.ReadToEnd());
-                Console.Write(process.StandardOutput.ReadToEnd());
-            }
-            catch (Exception e)
-            {
-                tasksource.SetException(e);
-                Console.Write(e);
-            }
-
-            return tasksource.Task;
-        }
+        
         
         static List<Choice> FindList(string runtime){
             return new List<Choice>
