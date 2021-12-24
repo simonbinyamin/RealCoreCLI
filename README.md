@@ -13,10 +13,19 @@
 ### 1. Start Real Core CLI
 
 ```
-ctrl + I
-This will download and run the library.
+ctrl + i
+This will install and run the library.
 ```
 
+##### dotnet run commands
+
+```
+ctrl + r  ->  dotnet run
+
+ctrl + p  -> dotnet run --urls=https://localhost:44306
+
+ctrl + w  ->  dotnet watch run
+```
 
  
 ### Developer

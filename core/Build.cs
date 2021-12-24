@@ -42,7 +42,7 @@ class Build
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
 
-                            var deletefiles = await platform("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.dll");
+                            var deletefiles = await platform("rm realcorecli.dll");
                             if (deletefiles == 0)
                             {
                                 await platform("rm realcorecli.runtimeconfig.json");
@@ -57,7 +57,10 @@ class Build
                 var app = await platform(cli);
                 if (app == 0)
                 {
-                    await platform("rm realcorecli realcorecli.deps.json realcorecli.pdb realcorecli.runtimeconfig.json realcorecli.dll");
+                    var deletefile = await platform("rm realcorecli.dll");
+                    if(deletefile == 0) {
+                        await platform("rm realcorecli.runtimeconfig.json");
+                    }
                 }
             }
             return "build";
