@@ -1,6 +1,6 @@
-## Welcome to Real Core CLI
+## Welcome to Real Net CLI
 
-### Real Core CLI screenshot
+### Real Net CLI screenshot
 
 ![alt text](https://github.com/simonbinyamin/RealCoreCLI/raw/master/ic/cli0.png)
 
@@ -10,7 +10,7 @@
 
 
 
-### 1. Start Real Core CLI
+### 1. Start Real Net CLI
 
 ```
 ctrl + i

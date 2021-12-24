@@ -4,7 +4,7 @@
     "name": "realcorecli",
     "displayName": "Real Net CLI",
     "description": "Real .NET core cli template project mvc api auth .net6 .net5 .netcore3.1",
-    "version": "0.0.5",
+    "version": "0.0.6",
 	"publisher": "realvisualstudio",
 	"icon": "ic/head.png",
 	"author": {
@@ -41,21 +41,21 @@
                 "key": "ctrl+r",
                 "command": "workbench.action.terminal.sendSequence",
                 "args": {
-                    "text": "dotnet run"
+                    "text": "dotnet run\r"
                 }
             },
             {
                 "key": "ctrl+p",
                 "command": "workbench.action.terminal.sendSequence",
                 "args": {
-                    "text": "dotnet run --urls=https://localhost:44306"
+                    "text": "dotnet run --urls=https://localhost:44306\r"
                 }
             },
             {
                 "key": "ctrl+w",
                 "command": "workbench.action.terminal.sendSequence",
                 "args": {
-                    "text": "dotnet watch run"
+                    "text": "dotnet watch run\r"
                 }
             }
         ]
