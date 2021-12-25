@@ -5,17 +5,25 @@ class Build
 {
     public static async Task<string> GetBuild(string cli, string projectname, bool layered)
     {
+        string deletefilesCLI = "";
+        string deletelastfileCLI = "";
         Func<string, Task<int>> platform;
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
+            deletefilesCLI ="rm realcorecli.dll realcorecli.pdb";
+            deletelastfileCLI = "rm realcorecli.runtimeconfig.json";
             platform = RunCLILinux;
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
+            deletefilesCLI ="del /f realcorecli.dll realcorecli.pdb";
+            deletelastfileCLI = "del /f realcorecli.runtimeconfig.json";
             platform = RunCLIWin;
         }
         else
         {
+            deletefilesCLI ="rm realcorecli.dll realcorecli.pdb";
+            deletelastfileCLI = "rm realcorecli.runtimeconfig.json";
             platform = RunCLILinux;
         }
 
@@ -42,10 +50,10 @@ class Build
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
 
-                            var deletefiles = await platform("rm realcorecli.dll");
+                            var deletefiles = await platform(deletefilesCLI);
                             if (deletefiles == 0)
                             {
-                                await platform("rm realcorecli.runtimeconfig.json");
+                                await platform(deletelastfileCLI);
                             }
 
                         }
@@ -57,9 +65,9 @@ class Build
                 var app = await platform(cli);
                 if (app == 0)
                 {
-                    var deletefile = await platform("rm realcorecli.dll");
+                    var deletefile = await platform(deletefilesCLI);
                     if(deletefile == 0) {
-                        await platform("rm realcorecli.runtimeconfig.json");
+                        await platform(deletelastfileCLI);
                     }
                 }
             }

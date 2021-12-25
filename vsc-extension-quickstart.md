@@ -13,8 +13,9 @@
 ### 1. Start Real Net CLI
 
 ```
-ctrl + i
-This will install and run the library.
+Open vscode terminal
+press: ctrl + i
+This will run the library.
 ```
 
 ##### dotnet run commands

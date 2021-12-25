@@ -34,11 +34,9 @@ namespace realclicore
                 new Choice(runtime+" webapi", async () => await CreateAsync("dotnet new webapi --framework "+runtime, false)),
                 new Choice(runtime+" mvc", async () => await CreateAsync("dotnet new mvc --framework "+runtime, false)),
                 new Choice(runtime+" console", async () => await CreateAsync("dotnet new console --framework "+runtime, false)),
-                new Choice(runtime+" individual webapi", async () => await CreateAsync("dotnet new webapi --auth Individual --framework "+runtime, false)),
                 new Choice(runtime+" individual mvc", async () => await CreateAsync("dotnet new mvc --auth Individual --framework "+runtime, false)),
                 new Choice(runtime+" layered webapi", async () => await CreateAsync("dotnet new webapi --framework "+runtime, true)),
                 new Choice(runtime+" layered mvc", async () => await CreateAsync("dotnet new mvc --framework "+runtime, true)),
-                new Choice(runtime+" layered individual webapi", async () => await CreateAsync("dotnet new webapi --auth Individual --framework "+runtime, true)),
                 new Choice(runtime+" layered individual mvc", async () => await CreateAsync("dotnet new mvc --auth Individual --framework "+runtime, true)),
                 new Choice("Exit", () => Environment.Exit(0))
 
