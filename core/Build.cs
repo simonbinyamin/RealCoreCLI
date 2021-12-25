@@ -5,25 +5,21 @@ class Build
 {
     public static async Task<string> GetBuild(string cli, string projectname, bool layered)
     {
-        string deletefilesCLI = "";
-        string deletelastfileCLI = "";
+        string delete = "";
         Func<string, Task<int>> platform;
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            deletefilesCLI ="rm realcorecli.dll realcorecli.pdb";
-            deletelastfileCLI = "rm realcorecli.runtimeconfig.json";
+            delete = "rm";
             platform = RunCLILinux;
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            deletefilesCLI ="del /f realcorecli.dll realcorecli.pdb";
-            deletelastfileCLI = "del /f realcorecli.runtimeconfig.json";
+            delete = "del /f";
             platform = RunCLIWin;
         }
         else
         {
-            deletefilesCLI ="rm realcorecli.dll realcorecli.pdb";
-            deletelastfileCLI = "rm realcorecli.runtimeconfig.json";
+            delete = "rm";
             platform = RunCLILinux;
         }
 
@@ -49,11 +45,12 @@ class Build
 
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
+                            var deleteDll = await platform(delete + " realcorecli.dll");
+                            var deletePdb = await platform(delete + " realcorecli.pdb");
 
-                            var deletefiles = await platform(deletefilesCLI);
-                            if (deletefiles == 0)
+                            if (deleteDll == 0 && deletePdb == 0)
                             {
-                                await platform(deletelastfileCLI);
+                                await platform(delete + " realcorecli.runtimeconfig.json");
                             }
 
                         }
@@ -65,9 +62,11 @@ class Build
                 var app = await platform(cli);
                 if (app == 0)
                 {
-                    var deletefile = await platform(deletefilesCLI);
-                    if(deletefile == 0) {
-                        await platform(deletelastfileCLI);
+                    var deleteDll = await platform(delete + " realcorecli.dll");
+                    var deletePdb = await platform(delete + " realcorecli.pdb");
+
+                    if(deleteDll == 0 && deletePdb == 0) {
+                        await platform(delete + " realcorecli.runtimeconfig.json");
                     }
                 }
             }

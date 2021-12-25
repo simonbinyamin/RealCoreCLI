@@ -4,7 +4,7 @@
     "name": "realcorecli",
     "displayName": "Real Net CLI",
     "description": "Real .NET core cli template project mvc api auth .net6 .net5 .netcore3.1",
-    "version": "0.0.8",
+    "version": "1.0.0",
 	"publisher": "realvisualstudio",
 	"icon": "ic/head.png",
 	"author": {
@@ -34,7 +34,7 @@
                 "win": "ctrl+i",
                 "command": "workbench.action.terminal.sendSequence",
                 "args": {
-                    "text": "curl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.dll --output realcorecli.dll\rcurl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.dll --output realcorecli.dll\rcurl https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.pdb --output realcorecli.pdb\rcurl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.runtimeconfig.json --output realcorecli.runtimeconfig.json\rdotnet realcorecli.dll\r"
+                    "text": "curl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.dll --output realcorecli.dll\rcurl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.pdb --output realcorecli.pdb\rcurl.exe https://raw.githubusercontent.com/realvisualstudio/RealCorecli_Releases/master/realcorecli.runtimeconfig.json --output realcorecli.runtimeconfig.json\rdotnet realcorecli.dll\r"
                 }
             },
             {
