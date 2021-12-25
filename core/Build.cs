@@ -14,7 +14,7 @@ class Build
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            delete = "del /f";
+            delete = "Remove-Item";
             platform = RunCLIWin;
         }
         else
@@ -45,12 +45,14 @@ class Build
 
                         if (slnProj == 0 && slnData == 0 && slnDomain == 0 && slnBusiness == 0)
                         {
-                            var deleteDll = await platform(delete + " realcorecli.dll");
                             var deletePdb = await platform(delete + " realcorecli.pdb");
 
-                            if (deleteDll == 0 && deletePdb == 0)
+                            if (deletePdb == 0)
                             {
-                                await platform(delete + " realcorecli.runtimeconfig.json");
+                                var deleteRuntimeConfigJSON = await platform(delete + " realcorecli.runtimeconfig.json");
+                                if(deleteRuntimeConfigJSON == 0) {
+                                    await platform(delete + " realcorecli.dll");
+                                }
                             }
 
                         }
@@ -62,11 +64,13 @@ class Build
                 var app = await platform(cli);
                 if (app == 0)
                 {
-                    var deleteDll = await platform(delete + " realcorecli.dll");
                     var deletePdb = await platform(delete + " realcorecli.pdb");
 
-                    if(deleteDll == 0 && deletePdb == 0) {
-                        await platform(delete + " realcorecli.runtimeconfig.json");
+                    if(deletePdb == 0) {
+                        var deleteRuntimeConfigJSON = await platform(delete + " realcorecli.runtimeconfig.json");
+                        if(deleteRuntimeConfigJSON == 0) {
+                            await platform(delete + " realcorecli.dll");
+                        }
                     }
                 }
             }
